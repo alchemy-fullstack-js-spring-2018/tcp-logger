@@ -59,13 +59,4 @@ describe('E2E', () => {
 
         client2.write(`\n${date} ${message}`);
     });
-
-    it('checks to see if log files match', () => {
-        const logFile = fs.readFileSync('log.txt');
-        const expectedFile = fs.readFileSync('expected.txt');
-        assert.deepEqual(logFile, expectedFile);
-        
-    });
-
-
 });
