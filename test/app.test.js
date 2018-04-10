@@ -4,15 +4,13 @@ const assert = require('assert');
 
 describe('E2E', () => {
 
-    const PORT = 15678;
+    const PORT = 15677;
 
     beforeEach(done => {
         app.listen(PORT, done);
     });
 
-    let client1 = null; 
-    let client2 = null;
-
+    let client1 = null;
     beforeEach(done => {
         client1 = net.connect(PORT, () => {
             client1.setEncoding('utf8');
@@ -20,6 +18,7 @@ describe('E2E', () => {
         });
     });
 
+    let client2 = null;
     beforeEach(done => {
         client2 = net.connect(PORT, () => {
             client2.setEncoding('utf8');
@@ -36,8 +35,8 @@ describe('E2E', () => {
         client2.destroy();
     });
 
-    it('client message is logged', () => {
-        const message = 'Hello';
+    it('client message is broadcast to other clients', done => {
+        const message = 'echo test';
 
         client2.on('data', received => {
             assert.equal(received, message);
@@ -46,5 +45,6 @@ describe('E2E', () => {
 
         client1.write(message);
     });
+
 
 });

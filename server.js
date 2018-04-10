@@ -1,14 +1,9 @@
-const net = require('net');
+const app = require('./lib/app');
 
-module.exports = function(logFilePath /*path to where to write log file */) {
-    
-   
+const PORT = 15678;
 
-    const server = net.createServer(client => {
-        client.on('data', data => {
-            console.log(data, logFilePath);
-        });
-    });
+app.on('listening', () => {
+    console.log('TCP Server listening on port', PORT);
+});
 
-    return server;
-};
+app.listen(PORT);
