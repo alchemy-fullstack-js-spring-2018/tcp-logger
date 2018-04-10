@@ -8,26 +8,33 @@ const logFilePath = ('./lib/log.txt');
 describe('E2E', () => {
 
     const PORT = 15677;
-    const server = app(logFilePath);
 
     beforeEach(done => {
-        server.listen(PORT, done);
+        app.listen(PORT, done);
     });
 
-    let client = null;
+    let client1 = null;
     beforeEach(done => {
-        client = net.connect(PORT, socket => {
-            client.setEncoding('utf8');
+        client1 = net.connect(PORT, socket => {
+            client1.setEncoding('utf8');
             done();
         });
     });
 
+    let client2 = null;
+    beforeEach(done => {
+        client2 = net.connect(PORT, socket => {
+            client2.setEncoding('utf8');
+            done();
+        });
+    });
     afterEach(() => {
-        server.close();
+        app.close();
     });
 
     afterEach(() => {
-        client.destroy();
+        client1.destroy();
+        client2.destroy();
     })
 
     it('test', () => {
