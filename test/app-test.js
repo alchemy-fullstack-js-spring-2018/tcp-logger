@@ -45,6 +45,6 @@ describe('E2E', () => {
             assert.equal(received, message);
             done();
         });
-        client1.write(message);
+        client2.write(message);
     })
 })
