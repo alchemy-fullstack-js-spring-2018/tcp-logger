@@ -1,0 +1,29 @@
+{
+  "name": "logger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server-start.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "devDependencies": {
+    "mocha": "^5.0.5",
+    "eslint": "^4.19.1"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tashazun/tcp-logger.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tashazun/tcp-logger/issues"
+  },
+  "homepage": "https://github.com/Tashazun/tcp-logger#readme"
+}
