@@ -4,14 +4,13 @@
   "description": "Create a message log",
   "main": "app.js",
   "directories": {
-    "pretest": "eslint .", 
+    
+  },
+  "scripts": {
+    "pretest": "eslint .",
     "lib": "lib",
     "test": "mocha",
     "start": "npm run test -- -w"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
   },
   "repository": {
     "type": "git",

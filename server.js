@@ -1,5 +1,5 @@
-const createServer = require('./lib/app')
-const net = require('net');
+const createServer = require('./lib/app');
+// const net = require('net');
 const logFilePath = '../captainslog.txt';
 
 
@@ -8,10 +8,9 @@ const server = createServer(logFilePath);
     
     
 server.on('listening', () => {
-    console.log('New server listening', PORT)
+    console.log('New server listening', PORT);
 });
-    console.log('client connected!');
-    //once client creates socket connection write to log hello.
+//once client creates socket connection write to log hello.
 
    
 

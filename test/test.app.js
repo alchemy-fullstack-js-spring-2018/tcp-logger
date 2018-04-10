@@ -2,7 +2,7 @@
 const app = require('../lib/app');
 const net = require('net');
 const assert = require('assert');
-
+const fs = require('fs');
 const logFilePath = '../captainslog.txt';
 
 describe('E2E', () => {
@@ -21,13 +21,13 @@ describe('E2E', () => {
         });
     });
 
-    let client2 = null;
-    beforeEach(done => {
-        client2 = net.connect(PORT, () => {
-            client2.setEncoding('utf8');
-            done();
-        });
-    });
+    // let client2 = null;
+    // beforeEach(done => {
+    //     client2 = net.connect(PORT, () => {
+    //         client2.setEncoding('utf8');
+    //         done();
+    //     });
+    // });
 
     afterEach(() => {
         app.close();
@@ -35,19 +35,21 @@ describe('E2E', () => {
 
     afterEach(() => {
         client1.destroy();
-        client2.destroy();
+
     });
 
-    it('client message is broadcast to other clients', done => {
+    it.only('client message is broadcast to other clients', done => {
         const message = 'echo test';
 
-        client2.on('data', received => {
-            assert.equal(received, message);
-            done();
-        });
 
-        client1.write(message);
+        
+        client1.write(message, () =>{
+            let logData = fs.readFileSync(logFilePath);
+            console.log(logData);
+            assert.equal(done);
+        });
     });
 
 
 });
+
