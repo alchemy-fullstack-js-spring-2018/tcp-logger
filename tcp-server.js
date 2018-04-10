@@ -16,7 +16,7 @@ const server = new net.Server(client => {
 }); //server is equal to establish new server.
 
 
-server.on('connect', clientSocket => { //connect to server, and create socket connection.
+server.on('connect', () => { //connect to server, and create socket connection.
 
 
 });
