@@ -5,12 +5,12 @@ const assert = require('assert');
 
 describe('E2E', () => {
 
-    const PORT = 15677;
+    const PORT = 15678;
     const logFilePath = './log.txt';
     const server = app(logFilePath);
 
-    beforeEach(done => {
-        server.listen(PORT, done);
+    beforeEach(() => {
+        server.listen(PORT);
     });
 
     let client1 = null;
@@ -30,6 +30,7 @@ describe('E2E', () => {
     });
 
     it('test', () => {
+        
         console.log('got here');
     });
 
