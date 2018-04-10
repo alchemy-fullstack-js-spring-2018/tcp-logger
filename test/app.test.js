@@ -1,5 +1,6 @@
 const app = require('../lib/app');
 const net = require('net');
+const fs = require('fs');
 const assert = require('assert');
 // const serverStart = require('../server');
 
@@ -54,6 +55,29 @@ describe('e2e test', () => {
         const written = client1.write(message);
         client2.write('maybe');
         assert.equal(written, true);
+    });
+    it('checks written messages get logged to log.txt', () => {
+        // fs.unlinkSync('log.txt', (err) => {
+        //     if(err) throw err;
+        //     console.log('path/file.txt was deleted');
+        // });
+
+        const message1 = 'read me first';
+        const message2 = 'read me last';
+
+        client1.write(message1);
+        client2.write(message2);
+        
+        let fileContents = '';
+        const readStream = fs.createReadStream('log.txt', 'utf8');
+
+        readStream.on('data', function(chunk) {  
+            fileContents += chunk;
+        }).on('end', function() {
+            const logSplit = ('split:', fileContents.split('\n').join('').split('** '));
+            const lastLog = logSplit[logSplit.length - 1];
+            assert.equal(lastLog, message2);
+        });
     });
 
 });
