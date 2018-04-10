@@ -10,8 +10,8 @@ describe('Clients', () => {
         clients.add(c1);
         clients.add(c2);
 
-        const index = Clients.has([c1, c2]);
-        assert.equal(index, true);
+        const index = clients.set();
+        assert.equal(index, [c1, c2]);
 
     });
 
