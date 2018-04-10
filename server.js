@@ -1,5 +1,6 @@
 const createServer = require('./lib/app');
-const logFilePath = './log.txt';
+const logFilePath = './lib/log.txt';
+
 const server = createServer(logFilePath);
 
 const PORT = 15678;
