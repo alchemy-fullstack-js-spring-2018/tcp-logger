@@ -7,9 +7,10 @@ describe('Logger Tests', () => {
     let logger;
     const message = 'This is only a test';
 
-    beforeEach(() => {
+    beforeEach(done => {
         logger = new Logger('./test/logger-test.txt');
         fs.truncate('./test/logger-test.txt');
+        done();
     });
 
     it('Adds a message to the logFile', () => {
