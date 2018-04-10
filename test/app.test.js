@@ -1,7 +1,7 @@
 const app = require('../lib/app');
 const net = require('net');
 const assert = require('assert');
-// const serverStart = require('../server');
+const serverStart = require('../server');
 
 describe('e2e test', () => {
 
@@ -38,11 +38,11 @@ describe('e2e test', () => {
         client2.destroy();
     });
 
-    it('server connected', () => {
+    it('server connected and writes message', () => {
         const message = 'hello there';
-              
-        
-        client1.write(message);
+        const written = client1.write(message);
+
+        assert.equal(written, true);
     });
 
 });
