@@ -1,5 +1,5 @@
 
-const app = require('../lib/app');
+const createServer = require('../lib/app');
 const net = require('net');
 const assert = require('assert');
 const fs = require('fs');
@@ -8,9 +8,10 @@ const logFilePath = '../captainslog.txt';
 describe('E2E', () => {
 
     const PORT = 15677;
+    const server = createServer(logFilePath);
 
     beforeEach(done => {
-        app.listen(PORT, done);
+        server.listen(PORT, done);
     });
 
     let client1 = null;
@@ -30,7 +31,7 @@ describe('E2E', () => {
     // });
 
     afterEach(() => {
-        app.close();
+        server.close();
     });
 
     afterEach(() => {

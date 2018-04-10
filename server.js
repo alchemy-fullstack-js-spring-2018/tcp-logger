@@ -13,6 +13,6 @@ server.on('listening', () => {
 
 //once client creates socket connection write to log hello.
 
-   
+server.listen(PORT);   
 
    
