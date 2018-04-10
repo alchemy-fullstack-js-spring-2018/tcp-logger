@@ -1,1 +1,7 @@
-// requires and starts the server.
+const app = require('./lib/app');
+
+const PORT = 15678;
+
+app.on('listening', () => {
+    console.log('Server listening on port ', PORT);
+});

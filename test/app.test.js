@@ -1,3 +1,8 @@
+const app = require('../lib/app');
+const Logger = require('./Logger');
+
+
+
 // Your tests will directly require `app.js` and start the server.
 // Write a test that creates two clients and has each one write a messages to the log. You can directly inspect 
 // the log files to test that log messages are being written. You'll need to parse (split) the file on new line, and then 
