@@ -1,7 +1,5 @@
 const app = require('../lib/app');
 const net = require('net');
-const assert = require('assert');
-const fs = require('fs');
 const readFrom = require('../lib/read-from');
 
 
@@ -33,7 +31,6 @@ describe('E2E', () => {
     
     beforeEach(done => {
         client1.write('please work', done());
-    
     });
 
     beforeEach(done => {
@@ -51,6 +48,7 @@ describe('E2E', () => {
             .then(buffer => {
                 console.log(buffer);
             });
+            
     });
 
 });
