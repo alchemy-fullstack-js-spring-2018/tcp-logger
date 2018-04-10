@@ -2,12 +2,16 @@ const app = require('../lib/app');
 const net = require('net');
 const assert = require('assert');
 
+const logFilePath = ('./lib/log.txt');
+
+
 describe('E2E', () => {
 
     const PORT = 15677;
+    const server = app(logFilePath);
 
     beforeEach(done => {
-        app.listen(PORT, done);
+        server.listen(PORT, done);
     });
 
     let client = null;
@@ -19,7 +23,7 @@ describe('E2E', () => {
     });
 
     afterEach(() => {
-        app.close();
+        server.close();
     });
 
     afterEach(() => {
