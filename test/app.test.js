@@ -1,7 +1,7 @@
 const app = require('../lib/app');
 const net = require('net');
 const assert = require('assert');
-const server = require('../server');
+// const serverStart = require('../server');
 
 describe('e2e test', () => {
 
@@ -14,6 +14,7 @@ describe('e2e test', () => {
     let client1 = null;
     beforeEach(done => {
         client1 = net.connect(PORT, () => {
+            console.log('new connection on ', PORT);
             client1.setEncoding('utf8');
             done();
         });
@@ -28,9 +29,13 @@ describe('e2e test', () => {
     });
 
     it('server connected', () => {
-
+        const message = 'hello there';
+        client1.on('data', data => {
+            console.log('stuff recieved', data);
+        });
+        
+        
+        client1.write('tacos');
     });
-
-
 
 });
