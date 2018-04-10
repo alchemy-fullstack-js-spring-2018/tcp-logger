@@ -40,10 +40,9 @@ describe('E2E', () => {
         client2.destroy();
     });
 
-    it.only('client message is heard', done => {
+    it('client message is heard', done => {
         const message = 'work work work';
 
-        
         client2.on('data', received => {
             assert.equal(received, message);
             done();
