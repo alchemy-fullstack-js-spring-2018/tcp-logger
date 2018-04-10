@@ -39,7 +39,7 @@ describe('E2E', () => {
 
     });
 
-    it.only('client message is broadcast to other clients', done => {
+    it.only('client message is logged', done => {
         const message = 'echo test';
 
 
@@ -47,8 +47,9 @@ describe('E2E', () => {
         client1.write(message, () =>{
             let logData = fs.readFileSync(logFilePath);
             console.log(logData); //eslint-disable-line
-            assert.equal(done);
+            assert.equal(message, 'echo test'); 
         });
+        done();
     });
 
 
