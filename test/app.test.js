@@ -36,25 +36,27 @@ describe('E2E', () => {
     });
 
     it('client message is broadcast to other clients', done => {
-        const message = '\nHello';
-
+        const message = 'Hello';
+        const date = new Date('October 9, 2017 13:54:52 GMT-0700 (PDT)');
+ 
         client2.on('data', received => {
-            assert.equal(received, message);
+            assert.equal(received, `\n${date} ${message}`);
             done();
         });
 
-        client1.write(message);
+        client1.write(`\n${date} ${message}`);
     });
 
     it('client message is broadcast to other clients', done => {
-        const message = '\nHello again';
+        const message = 'Hello again';
+        const date = new Date('October 9, 2017 13:55:26 GMT-0700 (PDT)');
 
         client1.on('data', received => {
-            assert.equal(received, message);
+            assert.equal(received, `\n${date} ${message}`);
             done();
         });
 
-        client2.write(message);
+        client2.write(`\n${date} ${message}`);
     });
 
 
