@@ -2,6 +2,7 @@ const app = require('../lib/app');
 const net = require('net');
 const assert = require('assert');
 const fs = require('fs');
+const readFrom = require('../lib/read-from');
 
 
 describe('E2E', () => {
@@ -29,18 +30,27 @@ describe('E2E', () => {
         });
     });
 
+    
+    beforeEach(done => {
+        client1.write('please work', done());
+    
+    });
+
+    beforeEach(done => {
+        client2.write('i can hear you', done());
+    });
+
     afterEach(done => {
         client1.destroy();
         client2.destroy();
         server.close(done());
     });
 
-    it('test', done => {
-        client1.write('please work');
-        const actual = fs.readFileSync('./log.txt');
-        console.log(actual.toString());
-        // assert.equal(actual, expected);
-        done();
+    it('test', () => {
+        return readFrom('./log.txt', 112)
+            .then(buffer => {
+                console.log(buffer);
+            });
     });
 
 });
