@@ -20,22 +20,29 @@ describe('e2e test', () => {
         });
     });
 
+    let client2 = null;
+    beforeEach(done => {
+        client2 = net.connect(PORT, () => {
+            client2.setEncoding('utf8');
+            done();
+        });
+    });
+
+
     afterEach (() => {
         app.close();
     });
 
     afterEach(() => {
         client1.destroy();
+        client2.destroy();
     });
 
     it('server connected', () => {
         const message = 'hello there';
-        client1.on('data', data => {
-            console.log('stuff recieved', data);
-        });
+              
         
-        
-        client1.write('tacos');
+        client1.write(message);
     });
 
 });
