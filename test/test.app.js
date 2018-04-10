@@ -45,7 +45,7 @@ describe('E2E', () => {
         
         client1.write(message, () =>{
             let logData = fs.readFileSync(logFilePath);
-            console.log(logData);
+            console.log(logData); //eslint-disable-line
             assert.equal(done);
         });
     });

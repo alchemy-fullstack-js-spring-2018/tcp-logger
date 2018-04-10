@@ -2,17 +2,17 @@ const net = require('net');
 
 const PORT = 15678;
 const server = new net.Server(client => {
-    console.log('client connected!');
+    console.log('client connected!'); //eslint-disable-line
     //once client creates socket connection write to log hello.
 
     client.on('data', data => {
-        console.log('client said', data);
+        console.log('client said', data); //eslint-disable-line
         client.write(data);
     });
 
     client.on('close', () => {
-        console.log('client left'); //passes message that client has disconnected.
-    });
+        console.log('client left'); // eslint-disable-line 
+    }); //passes message that client has disconnected.
 }); //server is equal to establish new server.
 
 
@@ -31,7 +31,7 @@ server.on('connect', clientSocket => { //connect to server, and create socket co
 //     c.pipe(c);
 // });
 server.on('listening', () => {
-    console.log('TCP Server listening on port', PORT);
-})
+    console.log('TCP Server listening on port', PORT); // eslint-disable-line
+});
 
 server.listen(PORT);
