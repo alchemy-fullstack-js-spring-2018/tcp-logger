@@ -8,8 +8,8 @@ describe('E2E', () => {
     const PORT = 15678;
     const logFilePath = './log.txt';
     const server = app(logFilePath);
-
     let client1 = null;
+    
     beforeEach(done => {
         server.listen(PORT);
         client1 = net.connect(PORT, () => {
