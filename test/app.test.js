@@ -1,5 +1,4 @@
 const app = require('../lib/app');
-const fs = require('fs');
 const net = require('net');
 const assert = require('assert');
 
