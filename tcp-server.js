@@ -1,11 +1,26 @@
 const net = require('net'); 
+
 const PORT = 15678;
-const server = new net.Server(); //server is equal to establish new server.
+const server = new net.Server(client => {
+    console.log('client connected!');
+    //once client creates socket connection write to log hello.
+
+    client.on('data', data => {
+        console.log('client said', data);
+        client.write(data);
+    });
+
+    client.on('close', () => {
+        console.log('client left'); //passes message that client has disconnected.
+    });
+}); //server is equal to establish new server.
+
+
 server.on('connect', clientSocket => { //connect to server, and create socket connection.
 
 
 });
-
+// my ip adress 192.168.1.69.
 //.NET example code for starting client server and logging connection
 // net.createServer(clientSocket => {
 //     console.log('client connected');
