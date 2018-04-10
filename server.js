@@ -8,7 +8,7 @@ const server = createServer(logFilePath);
     
     
 server.on('listening', () => {
-    ('New server listening', PORT);
+    console.log('New server listening', PORT);
 });
 //once client creates socket connection write to log hello.
 
