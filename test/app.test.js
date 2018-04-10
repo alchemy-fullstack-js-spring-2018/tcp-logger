@@ -36,7 +36,7 @@ describe('E2E', () => {
     });
 
     it('client message is broadcast to other clients', done => {
-        const message = 'echo test';
+        const message = '\nHello';
 
         client2.on('data', received => {
             assert.equal(received, message);
@@ -44,6 +44,17 @@ describe('E2E', () => {
         });
 
         client1.write(message);
+    });
+
+    it('client message is broadcast to other clients', done => {
+        const message = '\nHello again';
+
+        client1.on('data', received => {
+            assert.equal(received, message);
+            done();
+        });
+
+        client2.write(message);
     });
 
 
