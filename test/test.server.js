@@ -2,7 +2,7 @@ const createServer = require('../lib/app');
 const net = require('net');
 const assert = require('assert');
 
-const logFilePath = './log.txt';
+const logFilePath = './lib/log.txt';
 
 
 describe('E2E', () => {
@@ -40,7 +40,7 @@ describe('E2E', () => {
         client2.destroy();
     });
 
-    it('client message is written', done => {
+    it.only('client message is heard', done => {
         const message = 'work work work';
 
         
@@ -50,9 +50,6 @@ describe('E2E', () => {
         });
 
         client1.write('work work work');
-
-        // client1.write(message);
     });
-
 
 });
