@@ -42,9 +42,13 @@ describe('E2E', () => {
 
         
         client1.write(message, () =>{
-            let logData = fs.readFileSync(logFilePath).toString();
+            let logData = fs.readFileSync(logFilePath)
+                .toString()
+                .split('\n')
+                .pop()
+                .split(' ** ')[1];
             console.log(logData); //eslint-disable-line
-            assert.equal(message, 'echo test'); 
+            assert.equal(logData, 'echo test'); 
         });
         done();
     });
