@@ -3,7 +3,7 @@ const createServer = require('../lib/app');
 const net = require('net');
 const assert = require('assert');
 const fs = require('fs');
-const logFilePath = '../captainslog.txt';
+const logFilePath = './lib/captainslog.txt';
 
 describe('E2E', () => {
 
