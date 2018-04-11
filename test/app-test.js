@@ -8,10 +8,9 @@ const logFilePath = './lib/log.txt';
 describe('E2E', () => {
 
     const PORT = 15677;
-    const server = app(logFilePath);
 
     beforeEach(done => {
-        server.listen(PORT, done);
+        app.listen(PORT, done);
     });
 
     let client1 = null;
@@ -34,7 +33,7 @@ describe('E2E', () => {
         });
     });
     afterEach(() => {
-        server.close();
+        app.close();
     });
 
     afterEach(() => {
