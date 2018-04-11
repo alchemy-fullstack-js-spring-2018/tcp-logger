@@ -1,6 +1,7 @@
 const app = require('../lib/app');
 const net = require('net');
 const readFrom = require('../lib/read-from');
+const assert = require('assert');
 
 
 describe('E2E', () => {
@@ -29,13 +30,13 @@ describe('E2E', () => {
     });
 
     
-    beforeEach(done => {
-        client1.write('please work', done());
-    });
+    // beforeEach(done => {
+    //     client1.write('please work', done());
+    // });
 
-    beforeEach(done => {
-        client2.write('i can hear you', done());
-    });
+    // beforeEach(done => {
+    //     client2.write('i can hear you', done());
+    // });
 
     afterEach(done => {
         client1.destroy();
@@ -44,11 +45,16 @@ describe('E2E', () => {
     });
 
     it('test', () => {
-        return readFrom('./log.txt', 112)
-            .then(buffer => {
-                console.log(buffer);
-            });
-            
+        
+        server.on('close', () => {
+            return readFrom('./log.txt', 112)
+                .then(buffer => console.log(buffer));
+        });
+        
+        client1.write('please work'); 
+        client2.write('i can hear you');
+        // return buffer = readFrom('./log.txt', 112)
+        //     .then(console.log(buffer));
     });
 
 });
