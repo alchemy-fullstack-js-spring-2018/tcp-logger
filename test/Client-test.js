@@ -3,7 +3,7 @@ const Clients = require('../lib/Client');
 
 describe('Clients', () => {
 
-    it.only('gets added clients', () => {
+    it('gets added clients', () => {
         const clients = new Clients();
         const c1 = {};
         const c2 = {};

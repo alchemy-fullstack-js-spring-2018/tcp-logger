@@ -2,7 +2,7 @@ const app = require('../lib/app');
 const net = require('net');
 const assert = require('assert');
 
-const logFilePath = ('./lib/log.txt');
+const logFilePath = './lib/log.txt';
 
 
 describe('E2E', () => {
