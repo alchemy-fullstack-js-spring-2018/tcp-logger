@@ -36,7 +36,7 @@ describe('E2E', () => {
     afterEach(() => {
         client1.destroy();
         client2.destroy();
-    })
+    });
 
     it('test', () => {
         const message = 'test';
@@ -46,5 +46,5 @@ describe('E2E', () => {
             done();
         });
         client2.write(message);
-    })
-})
+    });
+});
