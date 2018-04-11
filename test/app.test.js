@@ -12,6 +12,7 @@ describe('e2e test', () => {
         app.listen(PORT, done);
     });
 
+    
     let client1 = null;
     beforeEach(done => {
         client1 = net.connect(PORT, () => {
@@ -19,7 +20,7 @@ describe('e2e test', () => {
             done();
         });
     });
-
+    
     let client2 = null;
     beforeEach(done => {
         client2 = net.connect(PORT, () => {
@@ -27,7 +28,7 @@ describe('e2e test', () => {
             done();
         });
     });
-
+    
     let client3 = null;
     beforeEach(done => {
         client3 = net.connect(PORT, () => {
@@ -35,8 +36,8 @@ describe('e2e test', () => {
             done();
         });
     });
-
-
+    
+    
     afterEach (() => {
         app.close();
     });
@@ -57,10 +58,6 @@ describe('e2e test', () => {
         assert.equal(written, true);
     });
     it('checks written messages get logged to log.txt', () => {
-        // fs.unlinkSync('log.txt', (err) => {
-        //     if(err) throw err;
-        //     console.log('path/file.txt was deleted');
-        // });
 
         const message1 = 'read me first';
         const message2 = 'read me last';
