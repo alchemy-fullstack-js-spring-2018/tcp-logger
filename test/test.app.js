@@ -22,22 +22,19 @@ describe('E2E', () => {
         });
     });
 
-    // let client2 = null;
-    // beforeEach(done => {
-    //     client2 = net.connect(PORT, () => {
-    //         client2.setEncoding('utf8');
-    //         done();
-    //     });
-    // });
-
-    afterEach(() => {
-        server.close();
+    let client2 = null;
+    beforeEach(done => {
+        client2 = net.connect(PORT, () => {
+            client2.setEncoding('utf8');
+            done();
+        });
     });
 
     afterEach(() => {
         client1.destroy();
-
+        server.close();
     });
+
 
     it.only('client message is logged', done => {
         const message = 'echo test';
@@ -45,7 +42,7 @@ describe('E2E', () => {
 
         
         client1.write(message, () =>{
-            let logData = fs.readFileSync(logFilePath);
+            let logData = fs.readFileSync(logFilePath).toString();
             console.log(logData); //eslint-disable-line
             assert.equal(message, 'echo test'); 
         });
