@@ -7,7 +7,6 @@
     
   },
   "scripts": {
-    "pretest": "eslint .",
     "lib": "lib",
     "test": "mocha",
     "start": "npm run test -- -w"
