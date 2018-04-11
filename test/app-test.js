@@ -15,17 +15,21 @@ describe('E2E', () => {
     });
 
     let client1 = null;
+    const message1 = 'This lab is designed to crush your confidence!';
     beforeEach(done => {
         client1 = net.connect(PORT, socket => {
             client1.setEncoding('utf8');
+            client1.write(message1);
             done();
         });
     });
 
     let client2 = null;
+    const message2 = 'I am a failure as a student.';
     beforeEach(done => {
         client2 = net.connect(PORT, socket => {
             client2.setEncoding('utf8');
+            client2.write(message2);
             done();
         });
     });
@@ -43,7 +47,6 @@ describe('E2E', () => {
         
         client1.on('data', received => {
             assert.equal(received, message);
-            done();
         });
         client2.write(message);
     });
