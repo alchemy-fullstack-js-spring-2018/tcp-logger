@@ -68,7 +68,7 @@ describe('e2e test', () => {
         let fileContents = '';
         const readStream = fs.createReadStream('log.txt', 'utf8');
 
-        readStream.on('data', function(chunk) {  
+        readStream.on('close', function(chunk) {  
             fileContents += chunk;
         }).on('end', function() {
             const logSplit = ('split:', fileContents.split('\n').join('').split('** '));
