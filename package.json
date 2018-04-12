@@ -1,7 +1,7 @@
 {
   "name": "tcp-logger",
   "version": "1.0.0",
-  "description": "## Author: Ryan Manro",
+  "description": "Logs a user's message on a TCP Server",
   "main": "app.js",
   "directories": {
     "test": "test"
@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/rmanro/tcp-logger.git"
   },
-  "author": "",
+  "author": "Ryan Manro",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/rmanro/tcp-logger/issues"

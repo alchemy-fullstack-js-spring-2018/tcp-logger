@@ -6,7 +6,7 @@ const assert = require('assert');
 
 describe('E2E', () => {
 
-    const PORT = 15678;
+    const PORT = 15677;
     const logFilePath = './log.txt';
     const server = app(logFilePath);
     
@@ -43,9 +43,13 @@ describe('E2E', () => {
                     const log = buffer.toString('utf8');
                     const lines = log.split('\n');
                     const dateAndMsg1 = lines[0].split('**');
+                    const dateAndMsg2 = lines[1].split('**');
                     const date1 = new Date(dateAndMsg1[0]);
+                    const date2 = new Date(dateAndMsg2[0]);
                     assert.ok(!isNaN(date1.getTime()));
+                    assert.ok(!isNaN(date2.getTime()));
                     assert.equal(dateAndMsg1[1], ' please work');
+                    assert.equal(dateAndMsg2[1], ' i can hear you');
                 });
         });
         
