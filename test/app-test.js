@@ -7,8 +7,7 @@ const assert = require('assert');
 describe('E2E', () => {
 
     const PORT = 15677;
-    const logFilePath = './log.txt';
-    const server = app(logFilePath);
+    const server = app('./log.txt');
     
     beforeEach(done => {
         server.listen(PORT, done());
