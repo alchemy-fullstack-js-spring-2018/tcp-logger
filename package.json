@@ -1,0 +1,28 @@
+{
+  "name": "tcp-logger",
+  "version": "1.0.0",
+  "description": "Create a message log",
+  "main": "app.js",
+  "directories": {
+    
+  },
+  "scripts": {
+    "lib": "lib",
+    "test": "mocha",
+    "start": "npm run test -- -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/J3ffcon1/tcp-logger.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/J3ffcon1/tcp-logger/issues"
+  },
+  "homepage": "https://github.com/J3ffcon1/tcp-logger",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "mocha": "^5.0.5"
+  }
+}
