@@ -48,7 +48,7 @@ describe('E2E', () => {
             let logData = fs.readFileSync(logFilePath)
                 .toString()
                 .split('\n')
-                .pop()
+                .pop();
                 // .split(' ** ')[1];
             console.log(logData); //eslint-disable-line
             assert.ok(logData, `\n${ new Date() } ** ${message}`); 
