@@ -1,0 +1,31 @@
+{
+  "name": "tcp-logger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pereztjacob/tcp-logger.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pereztjacob/tcp-logger/issues"
+  },
+  "homepage": "https://github.com/pereztjacob/tcp-logger#readme",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "mocha": "^4.1.0"
+  },
+  "dependencies": {
+    "net": "^1.0.2",
+    "tcp": "^1.0.0"
+  }
+}
