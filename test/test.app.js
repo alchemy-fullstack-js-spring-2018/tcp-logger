@@ -36,6 +36,7 @@ describe('E2E', () => {
    
     afterEach(() => {
         client1.destroy();
+        client2.destroy();
     });
 
     it.only('client message is logged', done => {
@@ -47,12 +48,13 @@ describe('E2E', () => {
             let logData = fs.readFileSync(logFilePath)
                 .toString()
                 .split('\n')
-                .pop();
+                .pop()
                 // .split(' ** ')[1];
             console.log(logData); //eslint-disable-line
             assert.ok(logData, `\n${ new Date() } ** ${message}`); 
             done();
         });
+        done();
         client1.write(message);
     });
 
