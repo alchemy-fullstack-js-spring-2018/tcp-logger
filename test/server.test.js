@@ -1,11 +1,32 @@
 const assert = require('assert');
-const GoServer = require('../lib/server');
+const Streams = require('../lib/log');
+const fs = require('fs');
+
+const Stdout = new Streams;
+let dataStr = 'hello test';
+let compareStr = '';
 
 describe('server', () => {
     
-    it('runs server', () => {
-        const testServer = new GoServer();
-        testServer.serverGo();
-        assert.equal(`${testServer.serverMessage}: ${testServer.PORT}`, `TCP listening on port: ${testServer.PORT}`);
+    it('test input / output', () => {
+
+        const date = new Date();
+        Stdout.writeThe(`${date}: ${dataStr}`);
+
+        let readStream = fs.createReadStream('./outFile.bmp', {
+            start: 0,
+            highWaterMark: 300
+        });
+
+        readStream.on('data', chunk => {
+            for(let i = 0; i < chunk.length; i++){
+                compareStr += chunk;
+            }
+        });
+
+        readStream.on('close', () => {
+            assert.equal(compareStr, `${date}: ${dataStr}`);
+        });
     });
+
 });
