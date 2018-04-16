@@ -43,7 +43,7 @@ describe('App Tests', () => {
         // client2.destroy();
     });
 
-    it.skip('adds a message to the logfile from client 1', () => {
+    it('adds a message to the logfile from client 1', () => {
         client1.write(message1);
         const result = fs.readFileSync('../tcp-logger/lib/log-file.txt', 'utf8').split(' ** ')[1];
         assert.equal(message1, result);
