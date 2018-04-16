@@ -3,16 +3,11 @@ const assert = require('assert');
 const net = require('net');
 const fs = require('fs');
 
-describe('App Tests', () => {
+describe('App Tests -- E2E', () => {
 
+    const logFile = './test/logger-test.txt';
+    const expectedLog = './test/expected-log.txt';
     const PORT = 15677;
-    const message1 = 'This is only a test';
-    // const message2 = 'Do not panic';
-
-    beforeEach(done => {
-        fs.truncate('../tcp-logger/lib/log-file.txt');
-        done();
-    });
 
     beforeEach(done => {
         app.listen(PORT, done);
@@ -22,35 +17,24 @@ describe('App Tests', () => {
     beforeEach(done => {
         client1 = net.connect(PORT, () => {
             client1.setEncoding('utf8');
+            done();
         });
-        done();
     });
     
-    // let client2 = null;
-    // beforeEach(done => {
-    //     client2 = net.connect(PORT, () => {
-    //         client2.setEncoding('utf8');
-    //     });
-    //     done();
-    // });
-    
-    afterEach(() => {
-        app.close();
+    it('client writes message to log file', (done)=> {
+        const message = 'Client message';
+        client1.write(message, () => {
+            const expected = fs.readFileSync(expectedLog, 'utf8').split(' ** ')[1].trim('\n');
+            const log = fs.readFileSync(logFile, 'utf8').split('\n')[0].split(' ** ')[1].trim('\n');
+            assert.equal(expected, log);
+            done();
+        });
     });
-    
+
     afterEach(() => {
         client1.destroy();
-        // client2.destroy();
+        app.close();
     });
-
-    it('adds a message to the logfile from client 1', () => {
-        client1.write(message1);
-        const result = fs.readFileSync('../tcp-logger/lib/log-file.txt', 'utf8').split(' ** ')[1];
-        assert.equal(message1, result);
-    });
-
-
-
 
 });
 
